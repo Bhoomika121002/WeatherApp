@@ -5,9 +5,16 @@ const options = {
 		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
 	}
 };
+const cityNameElement = document.getElementById("cityName");
+// const temp2 = document.getElementById("temp2");
+// const humidity2 = document.getElementById("humidity2");
+// const wind_speed2 = document.getElementById("wind_speed2");
+const submit = document.getElementById("submit");
+
 
 const getWeather = (city) => {
     cityName.innerHTML = city
+    
     fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=' + city, options)
     .then(response => response.json()) 
     .then((response) => {
@@ -33,7 +40,9 @@ const getWeather = (city) => {
 
 submit.addEventListener("click", (e)=>{
     e.preventDefault()
-    getWeather(city.value)
-})
+    const newCity = cityNameElement.value; // Get the new city name from the input field
+    getWeather(newCity);
+    //getWeather(cityName.value)
+});
 
-getWeather("Delhi")
+getWeather("Delhi");
